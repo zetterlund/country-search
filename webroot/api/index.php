@@ -4,4 +4,4 @@
  * Use as you will, or start over. It's up to you.
  */
  header('Content-Type: application/json');
- json_encode(['data' => ['Your data']]);
+ echo json_encode(['data' => ['Your data']]);

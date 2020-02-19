@@ -1,6 +1,6 @@
-#Fullstack evaluation template
+# Fullstack evaluation template
 
-##How to use
+## How to use
 The files included in this repository are here to get you started by giving
 you an idea on how you might start the project.
 
