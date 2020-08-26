@@ -11,7 +11,12 @@ function App() {
   const [data, setData] = useState("");
 
   const handleGetData = async () => {
-    const response = await fetch(`${HOST}/api/index.php`);
+    const response = await fetch(`${HOST}/api/index.php`, {
+      method: "get",
+      // mode: "cors",
+      // headers: { "Content-Type": "text/plain" },
+      // body: "mytest123",
+    });
     console.log({ response });
     const d = await response.text();
     console.log({ d });

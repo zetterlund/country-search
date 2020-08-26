@@ -5,15 +5,30 @@
  */
  // header('Content-Type: application/json');
 
-// Allow CORS for React development server
-header('Access-Control-Allow-Origin: {http://localhost:3000}');
- // echo json_encode(['data' => ['Your data']]);
 
-function CallAPI() {
-  $a = 'myResult';
-  return $a;
+
+// Allow CORS for React development server
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+
+    if ($_SERVER['HTTP_ORIGIN'] == 'http://localhost:3000') {
+      
+        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+        // header('Access-Control-Allow-Credentials: true');
+        // header('Access-Control-Max-Age: 86400');    // cache for 1 day
+    }
 }
-$response = CallAPI();
-echo $response;
+
+
+
+echo 'ok';
+
+//  // echo json_encode(['data' => ['Your data']]);
+
+// function CallAPI() {
+//   $a = 'myResult';
+//   return $a;
+// }
+// $response = CallAPI();
+// echo $response;
 
 ?>
