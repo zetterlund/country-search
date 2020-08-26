@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-const HOST = process.env.REACT_APP_HOST_PREFIX;
+// const HOST = process.env.REACT_APP_HOST_PREFIX;
+const HOST = "http://localhost:8765";
 console.log({ HOST });
 
 function App() {

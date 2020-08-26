@@ -4,9 +4,15 @@
  * Use as you will, or start over. It's up to you.
  */
  // header('Content-Type: application/json');
- // echo json_encode(['data' => ['Your data']]);
+ header('Access-Control-Allow-Origin: *');
+ echo json_encode(['data' => ['Your data']]);
 
-$a = "myValue";
-echo $a;
+// function CallAPI() {
+//   $a = 'myResult';
+//   return $a;
+// }
+
+// $response = CallAPI();
+// echo $response;
 
 ?>
