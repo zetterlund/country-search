@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import SearchResults from "./components/SearchResults";
 import StatisticsBox from "./components/StatisticsBox";
 import "./css/main.css";
@@ -19,17 +19,21 @@ function App() {
       body: JSON.stringify({ country: "estonia" }),
     });
     console.log({ response });
-    const d = await response.json();
-    console.log({ d });
-    setCountries(d);
+    const r = await response.json();
+    console.log({ r });
+    setCountries(r);
   };
 
   return (
     <div className="App">
       <p>Country Search within React</p>
       <button onClick={handleGetCountries}>Search</button>
-      <SearchResults countries={countries} />
-      <StatisticsBox />
+      {countries.length > 0 && (
+        <Fragment>
+          <SearchResults countries={countries} />
+          <StatisticsBox countries={countries} />
+        </Fragment>
+      )}
     </div>
   );
 }

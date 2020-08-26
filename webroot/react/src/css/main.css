@@ -26,6 +26,17 @@ body {
   width: 100px;
 }
 
+#statistics-box {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 5px;
+}
+
+#statistics-box .region,
+#statistics-box .subregion {
+  display: block;
+}
+
 /*
 #team-selection {
   input {
