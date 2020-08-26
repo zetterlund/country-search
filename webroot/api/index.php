@@ -6,12 +6,15 @@
  // header('Content-Type: application/json');
 
 
+// echo $_SERVER['REQUEST_URI'];
+$input = (array) json_decode(file_get_contents('php://input'), TRUE);
+echo $input['country'];
 
 // Allow CORS for React development server
 if (isset($_SERVER['HTTP_ORIGIN'])) {
 
     if ($_SERVER['HTTP_ORIGIN'] == 'http://localhost:3000') {
-      
+
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
         // header('Access-Control-Allow-Credentials: true');
         // header('Access-Control-Max-Age: 86400');    // cache for 1 day
@@ -20,7 +23,7 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 
 
 
-echo 'ok';
+
 
 //  // echo json_encode(['data' => ['Your data']]);
 

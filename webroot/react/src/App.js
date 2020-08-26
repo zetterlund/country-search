@@ -12,10 +12,10 @@ function App() {
 
   const handleGetData = async () => {
     const response = await fetch(`${HOST}/api/index.php`, {
-      method: "get",
-      // mode: "cors",
-      // headers: { "Content-Type": "text/plain" },
-      // body: "mytest123",
+      method: "post",
+      mode: "cors",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({ country: "estonia" }),
     });
     console.log({ response });
     const d = await response.text();
