@@ -1,2 +1,4 @@
 node_modules
-webroot/static/js
+webroot/static
+webroot/index.html
+
