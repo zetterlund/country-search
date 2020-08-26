@@ -4,8 +4,10 @@
  * Use as you will, or start over. It's up to you.
  */
  // header('Content-Type: application/json');
- // header('Access-Control-Allow-Origin: *');
- echo json_encode(['data' => ['Your data']]);
+ // echo json_encode(['data' => ['Your data']]);
+
+// Allow CORS from React development server
+header("Access-Control-Allow-Origin: {http://localhost:3000}");
 
 // function CallAPI() {
 //   $a = 'myResult';
