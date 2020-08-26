@@ -37,10 +37,11 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 // }
 // $r = CallAPI("GET", "http://restcountries.eu/rest/v2/name/est");
 
-$r = file_get_contents("http://restcountries.eu/rest/v2/name/estonia");
+$r = file_get_contents("http://restcountries.eu/rest/v2/name/est");
 $d = json_decode($r, true);
 
-echo 'ok';
+echo json_encode($d);
+
 
 // echo $r;
 
