@@ -18,7 +18,7 @@ function App() {
       body: JSON.stringify({ country: "estonia" }),
     });
     console.log({ response });
-    const d = await response.text();
+    const d = await response.json();
     console.log({ d });
     setData("testing");
   };

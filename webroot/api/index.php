@@ -8,7 +8,6 @@
 
 // echo $_SERVER['REQUEST_URI'];
 $input = (array) json_decode(file_get_contents('php://input'), TRUE);
-echo $input['country'];
 
 // Allow CORS for React development server
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -21,6 +20,7 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
     }
 }
 
+echo json_encode($input)
 
 
 
