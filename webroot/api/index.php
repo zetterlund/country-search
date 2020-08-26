@@ -6,9 +6,6 @@
  // header('Content-Type: application/json');
 
 
-// echo $_SERVER['REQUEST_URI'];
-$input = (array) json_decode(file_get_contents('php://input'), TRUE);
-
 // Allow CORS for React development server
 if (isset($_SERVER['HTTP_ORIGIN'])) {
 
@@ -20,18 +17,55 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
     }
 }
 
-echo json_encode($input)
+
+
+// function CallAPI($method, $url) {
+//     $curl = curl_init();
+
+//     // // $url = sprintf("%s?%s", $url, http_build_query($data));
+
+//     curl_setopt($curl, CURLOPT_URL, $url);
+//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+//     $result = curl_exec($curl);
+
+//     curl_close($curl);
+
+//     echo $result;
+
+//     return $result;
+// }
+// $r = CallAPI("GET", "http://restcountries.eu/rest/v2/name/est");
+
+$r = file_get_contents("http://restcountries.eu/rest/v2/name/estonia");
+$d = json_decode($r, true);
+
+echo 'ok';
+
+// echo $r;
+
+
+
+// echo gettype($r);
+// echo 'ok';
+
+// echo json_decode(reset($response));
+
+
+// echo json_encode(var_dump($response));
+
+// echo json_encode($response);
+
+
+
+
+// $input = (array) json_decode(file_get_contents('php://input'), TRUE);
+// echo json_encode($input)
 
 
 
 
 //  // echo json_encode(['data' => ['Your data']]);
 
-// function CallAPI() {
-//   $a = 'myResult';
-//   return $a;
-// }
-// $response = CallAPI();
-// echo $response;
 
 ?>

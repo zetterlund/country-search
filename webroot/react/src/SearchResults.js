@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import "./css/main.css";
 
-const HOST = process.env.REACT_APP_HOST_PREFIX;
-// const HOST = "http://localhost:8765";
-
-function App() {
+function SearchResults() {
   //Write your javascript here, or roll your own. It's up to you.
   //Make your ajax call to http://localhost:8765/api/index.php here
   const [data, setData] = useState("");
@@ -31,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default SearchResults;
