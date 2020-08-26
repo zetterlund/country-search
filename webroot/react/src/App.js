@@ -4,7 +4,7 @@ import "./css/main.css";
 // const HOST = process.env.REACT_APP_HOST_PREFIX;
 const HOST = "http://localhost:8765";
 console.log({ HOST });
-console.log("sure");
+
 function App() {
   //Write your javascript here, or roll your own. It's up to you.
   //Make your ajax call to http://localhost:8765/api/index.php here
