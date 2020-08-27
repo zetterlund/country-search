@@ -70,6 +70,11 @@ function CallAPI($searchType, $searchString) {
     // Decode JSON API response data
     $countryData = json_decode($rawData, true); 
 
+    // (If response is an associatve array, wrap it in a sequential array)
+    if (array_keys($countryData) !== range(0, count($countryData) - 1)) {
+        $countryData = array(0 => $countryData); // (Is it a bad PHP pattern to mutate instance?)
+    }
+
     // Sort the results by population
     usort($countryData, function($a, $b) {
         return $b['population'] <=> $a['population'];
