@@ -5,13 +5,11 @@ This program uses PHP 7.3 and React 16
 ### To run:
 
 (After cloning repo)
-
 ```
 $ ./server
 ```
 
 Then go to:
-
 ```
 http://localhost:8765
 ```
@@ -25,7 +23,6 @@ $ npm start
 ```
 
 And visit:
-
 ```
 http://localhost:3000
 ```
@@ -36,5 +33,4 @@ http://localhost:3000
 $ cd ./react
 $ npm run build
 ```
-
 And then follow instructions in "To run" section above.
