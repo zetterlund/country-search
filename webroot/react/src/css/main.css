@@ -55,6 +55,7 @@ button[type="submit"] {
 }
 .flag {
   width: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 /* ---------------------- */
 
