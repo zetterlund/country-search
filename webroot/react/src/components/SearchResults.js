@@ -1,34 +1,18 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
 function SearchResults({ countries }) {
   return (
     <Fragment>
       <h2>Search Results</h2>
       <div id="search-results">
-        <div>
-          <span className="heading">Name</span>
-        </div>
-        <div>
-          <span className="heading">Alpha Code 2</span>
-        </div>
-        <div>
-          <span className="heading">Alpha Code 3</span>
-        </div>
-        <div>
-          <span className="heading">Region</span>
-        </div>
-        <div>
-          <span className="heading">Subregion</span>
-        </div>
-        <div>
-          <span className="heading">Population</span>
-        </div>
-        <div>
-          <span className="heading">Languages</span>
-        </div>
-        <div>
-          <span className="heading">Flag</span>
-        </div>
+        <div className="heading">Name</div>
+        <div className="heading">Alpha Code 2</div>
+        <div className="heading">Alpha Code 3</div>
+        <div className="heading">Region</div>
+        <div className="heading">Subregion</div>
+        <div className="heading">Population</div>
+        <div className="heading">Languages</div>
+        <div className="heading">Flag</div>
         {countries.map((c, i) => {
           return (
             <Fragment key={i}>
@@ -46,7 +30,7 @@ function SearchResults({ countries }) {
                   })}
               </div>
               <div>
-                <img className="flag" src={c.flag} />
+                <img className="flag" alt="flag" src={c.flag} />
               </div>
             </Fragment>
           );
@@ -57,9 +41,3 @@ function SearchResults({ countries }) {
 }
 
 export default SearchResults;
-
-// <TeamRows
-//   teams={this.state.teams}
-//   removeTeam={this.removeTeam}
-//   handleChange={this.handleChange}
-// />

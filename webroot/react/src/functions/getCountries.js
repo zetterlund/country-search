@@ -1,5 +1,5 @@
+// Host is different in development vs. production environments
 const HOST = process.env.REACT_APP_HOST_PREFIX;
-// const HOST = "http://localhost:8765";
 
 // Function to call backend service to get country list
 async function getCountries(searchType, searchString) {

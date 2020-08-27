@@ -43,19 +43,19 @@ function CallAPI($searchType, $searchString) {
     /* Check response for errors */
     $statusCode = trim($http_response_header[0]);
     if ($statusCode == "HTTP/1.1 400") {
-      // (Server error)
-      $response['result'] = "errorServerError";
-      return $response;      
+        // (Server error)
+        $response['result'] = "errorServerError";
+        return $response;      
     }
     if ($statusCode == "HTTP/1.1 404") {
-      // (No search results)
-      $response['result'] = "errorNoResults";
-      return $response;      
+        // (No search results)
+        $response['result'] = "errorNoResults";
+        return $response;      
     }
     if ($statusCode != "HTTP/1.1 200") {
-      // (Unknown error)
-      $response['result'] = "errorUnknownError";
-      return $response;      
+        // (Unknown error)
+        $response['result'] = "errorUnknownError";
+        return $response;      
     }    
 
     // Decode JSON API response data

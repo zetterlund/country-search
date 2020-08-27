@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 
 function SearchForm(props) {
   const [searchType, setSearchType] = useState("country-name");
@@ -65,7 +65,12 @@ function SearchForm(props) {
             <label>Country code</label>
           </div>
         </div>
-        <button type="submit">🌍 Search</button>
+        <button type="submit">
+          <span className="emoji" role="img" aria-label="globe">
+            🌍
+          </span>
+          Search
+        </button>
       </form>
     </Fragment>
   );

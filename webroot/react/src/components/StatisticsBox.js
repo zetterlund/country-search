@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment } from "react";
 
 function computeStatistics(countries) {
   // Instantiate variables
@@ -25,17 +25,10 @@ function computeStatistics(countries) {
     }
   });
 
-  // const countryCount = 5;
-  // regionCount = { europe: 2 };
-  // subregionCount = { greece: 5 };
   return { countryCount, regionCount, subregionCount };
 }
 
 function StatisticsBox({ countries }) {
-  // const [loading, setLoading] = useState(true);
-
-  console.log({ countries });
-
   const { countryCount, regionCount, subregionCount } = computeStatistics(
     countries
   );
