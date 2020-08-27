@@ -2,18 +2,12 @@
 
 // Allow CORS for React development server
 if (isset($_SERVER['HTTP_ORIGIN'])) {
-
     if ($_SERVER['HTTP_ORIGIN'] == 'http://localhost:3000') {
-
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-        // header('Access-Control-Allow-Credentials: true');
-        // header('Access-Control-Max-Age: 86400');    // cache for 1 day
     }
 }
 
-
-
-
+// Define function that will make the external API call
 function CallAPI($searchType, $searchString) {
 
     // Instantiate response object
@@ -21,16 +15,13 @@ function CallAPI($searchType, $searchString) {
     $response['result'] = '';
     $response['data'] = array();   
 
-    // If search string is empty, return error
-    if (is_null($searchString) || $searchString == '') {
+    // If a search parameter is empty, return error)
+    if (is_null($searchString) || $searchString == '' || is_null($searchType) || $searchType == '') {
         $response['result'] = "errorEmptySearch";
         return $response;
     }
 
-    // (What about if $searchType is null?)
-
-    /* Compose endpoint URI */
-    // Initialize URI based on what type of search has been requested
+    // Initialize endpoint URI based on what type of search has been requested
     switch ($searchType) {
         case 'country-name':
             $uri = "http://restcountries.eu/rest/v2/name/{$searchString}?";
@@ -86,22 +77,13 @@ function CallAPI($searchType, $searchString) {
     return $response;
 }
 
-
-
 // Get "country search" form values from frontend search call
 $input = json_decode(file_get_contents('php://input'), TRUE);
-// echo json_encode($input);
 
-
+// Call external API to get country list
 $countries = CallAPI($input["searchType"], $input["searchString"]);
 
 // Return results to frontend
 echo json_encode($countries);
-
-
-
-
-
-// echo json_encode(['data' => ['Your data']]);
 
 ?>
