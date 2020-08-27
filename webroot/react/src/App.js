@@ -18,6 +18,8 @@ function App() {
     // Clear any potential errors
     setError(null);
 
+    // test comment to delete
+
     const rawResponse = await fetch(`${HOST}/api/index.php`, {
       method: "post",
       mode: "cors",
