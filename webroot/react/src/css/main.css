@@ -12,43 +12,6 @@ body {
   text-align: center;
 }
 
-.error-box {
-  background-color: rgba(255, 0, 0, 0.2);
-  display: inline-block;
-  padding: 0 20px;
-  border-radius: 4px;
-}
-
-#search-results {
-  /*width: 100%;*/
-  display: grid;
-  grid-template-columns: repeat(7, auto) minmax(150px, auto);
-  grid-gap: 5px;
-  /*justify-content: start;*/
-  align-items: center;
-  /*box-sizing: border-box;*/
-}
-
-.flag {
-  width: 100px;
-}
-
-#statistics-box {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 5px;
-}
-
-#statistics-box .region,
-#statistics-box .subregion {
-  display: block;
-}
-
-h2 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
 /* --- Search form --- */
 input[type="text"] {
   padding: 10px;
@@ -67,6 +30,53 @@ button[type="submit"] {
   margin-bottom: 10px;
 }
 /* ------------------- */
+
+/* --- Error box --- */
+.error-box {
+  background-color: rgba(255, 0, 0, 0.2);
+  display: inline-block;
+  padding: 0 20px;
+  border-radius: 4px;
+}
+/* ----------------- */
+
+/* --- Search results --- */
+#search-results {
+  /*width: 100%;*/
+  display: grid;
+  grid-template-columns: repeat(7, auto) minmax(150px, auto);
+  grid-gap: 5px;
+  /*justify-content: start;*/
+  align-items: center;
+  /*box-sizing: border-box;*/
+}
+#search-results .heading {
+  font-weight: 700;
+}
+.flag {
+  width: 100px;
+}
+/* ---------------------- */
+
+/* --- Statistics box --- */
+#statistics-box {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 5px;
+  margin: 0 auto;
+  width: 400px;
+  text-align: left;
+}
+#statistics-box .region,
+#statistics-box .subregion {
+  display: block;
+}
+/* ---------------------- */
+
+h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 /*
 #team-selection {

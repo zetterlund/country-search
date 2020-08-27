@@ -5,14 +5,30 @@ function SearchResults({ countries }) {
     <Fragment>
       <h2>Search Results</h2>
       <div id="search-results">
-        <div>Name</div>
-        <div>Alpha Code 2</div>
-        <div>Alpha Code 3</div>
-        <div>Region</div>
-        <div>Subregion</div>
-        <div>Population</div>
-        <div>Languages</div>
-        <div>Flag</div>
+        <div>
+          <span className="heading">Name</span>
+        </div>
+        <div>
+          <span className="heading">Alpha Code 2</span>
+        </div>
+        <div>
+          <span className="heading">Alpha Code 3</span>
+        </div>
+        <div>
+          <span className="heading">Region</span>
+        </div>
+        <div>
+          <span className="heading">Subregion</span>
+        </div>
+        <div>
+          <span className="heading">Population</span>
+        </div>
+        <div>
+          <span className="heading">Languages</span>
+        </div>
+        <div>
+          <span className="heading">Flag</span>
+        </div>
         {countries.map((c, i) => {
           return (
             <Fragment key={i}>

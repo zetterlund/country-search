@@ -42,7 +42,7 @@ function StatisticsBox({ countries }) {
 
   return (
     <Fragment>
-      <h2>Statistics:</h2>
+      <h2>Statistics</h2>
       <div id="statistics-box">
         <div>Country count:</div>
         <div>{countryCount}</div>
