@@ -15,7 +15,7 @@ function CallAPI($searchType, $searchString) {
     $response['result'] = '';
     $response['data'] = array();   
 
-    // If a search parameter is empty, return error)
+    // If a search parameter is empty, return error
     if (is_null($searchString) || $searchString == '' || is_null($searchType) || $searchType == '') {
         $response['result'] = "errorEmptySearch";
         return $response;
