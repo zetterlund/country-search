@@ -1,14 +1,4 @@
 <?php
-/**
- * This is a template php file for your countries search.
- * Use as you will, or start over. It's up to you.
- */
- // header('Content-Type: application/json');
-
-
-
-
-
 
 // Allow CORS for React development server
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -20,28 +10,6 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
         // header('Access-Control-Max-Age: 86400');    // cache for 1 day
     }
 }
-
-
-
-
-
-// function CallAPI($method, $url) {
-//     $curl = curl_init();
-
-//     // // $url = sprintf("%s?%s", $url, http_build_query($data));
-
-//     curl_setopt($curl, CURLOPT_URL, $url);
-//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-
-//     $result = curl_exec($curl);
-
-//     curl_close($curl);
-
-//     echo $result;
-
-//     return $result;
-// }
-// $r = CallAPI("GET", "http://restcountries.eu/rest/v2/name/est");
 
 
 
@@ -64,13 +32,13 @@ function CallAPI($searchType, $searchString) {
     // Retrieve country data based on what type of search has been requested
     switch ($searchType) {
         case 'country-name':
-            $rawData = file_get_contents("http://restcountries.eu/rest/v2/name/{$searchString}");
+            $rawData = file_get_contents("http://restcountries.eu/rest/v2/name/{$searchString}?");
             break;
         case 'full-name':
             $rawData = file_get_contents("http://restcountries.eu/rest/v2/name/{$searchString}?fullText=true");
             break;
         case 'country-code':
-            $rawData = file_get_contents("http://restcountries.eu/rest/v2/alpha/{$searchString}");
+            $rawData = file_get_contents("http://restcountries.eu/rest/v2/alpha/{$searchString}?");
             break;            
     }
 
@@ -83,7 +51,12 @@ function CallAPI($searchType, $searchString) {
         return $response;
     }
 
-    // Request was successful; return response
+    // Sort the results by population
+    usort($countryData, function($a, $b) {
+        return $b['population'] <=> $a['population'];
+    });
+
+    // Return response
     $response['result'] = 'success';
     $response['data'] = $countryData;
     return $response;
