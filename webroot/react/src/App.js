@@ -18,6 +18,8 @@ function App() {
     // Clear any potential errors
     setError(null);
 
+    // Will this comment survive THE MERGE?!
+
     const rawResponse = await fetch(`${HOST}/api/index.php`, {
       method: "post",
       mode: "cors",
