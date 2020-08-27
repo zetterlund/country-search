@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from "react";
+import SearchForm from "./components/SearchForm";
+import ErrorBox from "./components/ErrorBox";
 import SearchResults from "./components/SearchResults";
 import StatisticsBox from "./components/StatisticsBox";
 import "./css/main.css";
@@ -10,24 +12,36 @@ function App() {
   //Write your javascript here, or roll your own. It's up to you.
   //Make your ajax call to http://localhost:8765/api/index.php here
   const [countries, setCountries] = useState([]);
+  const [error, setError] = useState("");
 
-  const handleGetCountries = async () => {
-    const response = await fetch(`${HOST}/api/index.php`, {
+  const handleSearchSubmit = async (searchType, searchString) => {
+    // Clear any potential errors
+    setError(null);
+
+    const rawResponse = await fetch(`${HOST}/api/index.php`, {
       method: "post",
       mode: "cors",
       headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify({ country: "estonia" }),
+      body: JSON.stringify({ searchType, searchString }),
     });
-    console.log({ response });
-    const r = await response.json();
-    console.log({ r });
-    setCountries(r);
+    const response = await rawResponse.json();
+
+    /* Process response */
+    if (response["result"] === "success") {
+      // Success
+      setCountries(response["data"]);
+    } else {
+      // Error
+      setCountries([]);
+      setError(response["result"]);
+    }
   };
 
   return (
     <div className="App">
-      <p>Country Search within React</p>
-      <button onClick={handleGetCountries}>Search</button>
+      <h1>Country Search</h1>
+      <SearchForm searchSubmit={handleSearchSubmit} />
+      {error && <ErrorBox error={error} />}
       {countries.length > 0 && (
         <Fragment>
           <SearchResults countries={countries} />

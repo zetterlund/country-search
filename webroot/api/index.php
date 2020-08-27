@@ -6,6 +6,10 @@
  // header('Content-Type: application/json');
 
 
+
+
+
+
 // Allow CORS for React development server
 if (isset($_SERVER['HTTP_ORIGIN'])) {
 
@@ -16,6 +20,8 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
         // header('Access-Control-Max-Age: 86400');    // cache for 1 day
     }
 }
+
+
 
 
 
@@ -37,36 +43,69 @@ if (isset($_SERVER['HTTP_ORIGIN'])) {
 // }
 // $r = CallAPI("GET", "http://restcountries.eu/rest/v2/name/est");
 
-$r = file_get_contents("http://restcountries.eu/rest/v2/name/est");
-$d = json_decode($r, true);
-
-echo json_encode($d);
-
-
-// echo $r;
 
 
 
-// echo gettype($r);
-// echo 'ok';
+function CallAPI($searchType, $searchString) {
 
-// echo json_decode(reset($response));
+    // Instantiate response object
+    $response = array();
+    $response['result'] = '';
+    $response['data'] = array();   
+
+    // If search string is empty, return error
+    if (is_null($searchString) || $searchString == '') {
+        $response['result'] = "errorEmptySearch";
+        return $response;
+    }
+
+    // (What about if $searchType is null?)
+
+    // Retrieve country data based on what type of search has been requested
+    switch ($searchType) {
+        case 'country-name':
+            $rawData = file_get_contents("http://restcountries.eu/rest/v2/name/{$searchString}");
+            break;
+        case 'full-name':
+            $rawData = file_get_contents("http://restcountries.eu/rest/v2/name/{$searchString}?fullText=true");
+            break;
+        case 'country-code':
+            $rawData = file_get_contents("http://restcountries.eu/rest/v2/alpha/{$searchString}");
+            break;            
+    }
+
+    // Decode JSON API response data
+    $countryData = json_decode($rawData, true); 
+
+    // If request was empty, return error
+    if (count($countryData) == 0) {
+        $response['result'] = "errorNoResults";
+        return $response;
+    }
+
+    // Request was successful; return response
+    $response['result'] = 'success';
+    $response['data'] = $countryData;
+    return $response;
+
+}
 
 
-// echo json_encode(var_dump($response));
 
-// echo json_encode($response);
-
-
-
-
-// $input = (array) json_decode(file_get_contents('php://input'), TRUE);
-// echo json_encode($input)
+// Get "country search" form values from frontend search call
+$input = json_decode(file_get_contents('php://input'), TRUE);
+// echo json_encode($input);
 
 
+$countries = CallAPI($input[searchType], $input[searchString]);
+
+// Return results to frontend
+echo json_encode($countries);
 
 
-//  // echo json_encode(['data' => ['Your data']]);
 
+
+
+// echo json_encode(['data' => ['Your data']]);
 
 ?>
