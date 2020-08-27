@@ -49,12 +49,16 @@ function CallAPI($searchType, $searchString) {
     // Retrieve country data
     $rawData = file_get_contents($uri);
 
-
+    // (Check for server error)
+    if ($rawData == false) {
+      $response['result'] = "errorServerError";
+      return $response;
+    }
 
     // Decode JSON API response data
     $countryData = json_decode($rawData, true); 
 
-    // If request was empty, return error
+    // If no results were found, return error
     if (count($countryData) == 0) {
         $response['result'] = "errorNoResults";
         return $response;

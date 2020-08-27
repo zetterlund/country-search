@@ -21,6 +21,14 @@ function ErrorBox({ error }) {
           </p>
         </div>
       )}
+      {error === "errorServerError" && (
+        <div>
+          <p>
+            Hmm... the external API returned a 400 error. Most likely no results
+            were found; try modifying your search terms and try again.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
