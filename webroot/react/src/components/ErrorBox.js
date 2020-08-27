@@ -29,6 +29,14 @@ function ErrorBox({ error }) {
           </p>
         </div>
       )}
+      {error === "errorUnknownError" && (
+        <div>
+          <p>
+            Oh boy. We've received some unknown error. Go find the person who
+            wrote this program and tell them!
+          </p>
+        </div>
+      )}
     </div>
   );
 }

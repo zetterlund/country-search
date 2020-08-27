@@ -46,23 +46,29 @@ function CallAPI($searchType, $searchString) {
     $searchFields = "name;alpha2Code;alpha3Code;region;subregion;population;languages;flag";
     $uri .= "fields={$searchFields}";
 
-    // Retrieve country data
+    // Execute API call
     $rawData = file_get_contents($uri);
 
-    // (Check for server error)
-    if ($rawData == false) {
+    /* Check response for errors */
+    $statusCode = trim($http_response_header[0]);
+    if ($statusCode == "HTTP/1.1 400") {
+      // (Server error)
       $response['result'] = "errorServerError";
-      return $response;
+      return $response;      
     }
+    if ($statusCode == "HTTP/1.1 404") {
+      // (No search results)
+      $response['result'] = "errorNoResults";
+      return $response;      
+    }
+    if ($statusCode != "HTTP/1.1 200") {
+      // (Unknown error)
+      $response['result'] = "errorUnknownError";
+      return $response;      
+    }    
 
     // Decode JSON API response data
     $countryData = json_decode($rawData, true); 
-
-    // If no results were found, return error
-    if (count($countryData) == 0) {
-        $response['result'] = "errorNoResults";
-        return $response;
-    }
 
     // Sort the results by population
     usort($countryData, function($a, $b) {
@@ -73,7 +79,6 @@ function CallAPI($searchType, $searchString) {
     $response['result'] = 'success';
     $response['data'] = $countryData;
     return $response;
-
 }
 
 
