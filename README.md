@@ -2,12 +2,12 @@
 
 This program uses PHP 7.3 and React 16
 
-## To run:
+### To run:
 
 (After cloning repo)
 
 ```
-$> ./server
+$ ./server
 ```
 
 Then go to:
@@ -16,12 +16,12 @@ Then go to:
 http://localhost:8765
 ```
 
-## To run in development mode:
+### To run in development mode:
 
 ```
-cd ./react
-npm install
-npm start
+$ cd ./react
+$ npm install
+$ npm start
 ```
 
 And visit:
@@ -30,11 +30,11 @@ And visit:
 http://localhost:3000
 ```
 
-## To build for production:
+### To build for production:
 
 ```
-cd ./react
-npm run build
+$ cd ./react
+$ npm run build
 ```
 
 And then follow instructions in "To run" section above.
