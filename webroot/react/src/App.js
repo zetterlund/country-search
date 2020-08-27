@@ -14,6 +14,8 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [error, setError] = useState("");
 
+  const myList = ["first", "second", "third"];
+
   const handleSearchSubmit = async (searchType, searchString) => {
     // Clear any potential errors
     setError(null);
@@ -40,6 +42,13 @@ function App() {
   return (
     <div className="App">
       <h1>Country Search</h1>
+
+      <p>
+        {myList.reduce((a, c) => {
+          return a + ",, " + c;
+        })}
+      </p>
+
       <SearchForm searchSubmit={handleSearchSubmit} />
       {error && <ErrorBox error={error} />}
       {countries.length > 0 && (

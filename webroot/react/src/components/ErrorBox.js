@@ -5,20 +5,19 @@ function ErrorBox({ error }) {
     <div className="error-box">
       {error === "errorEmptySearch" && (
         <div>
-          <p>It looks like you've left the search box empty.</p>
-          <p>Be sure to type something in and then click 'search'!</p>
+          <p>It looks like you've left the search box empty!</p>
         </div>
       )}
       {error === "errorNoResults" && (
         <div>
           <p>
             Unfortunately, while your search was successfully completed, it
-            didn't return any results.
+            didn't return any results. Try fixing the spelling or typing
+            something else.
           </p>
-          <p>Try fixing the spelling or typing something else.</p>
           <p>
-            If you're still having trouble, try going for a walk outside. I know
-            it often helps me.
+            If you're still having trouble, perhaps go for a walk outside. I
+            know it often helps me.
           </p>
         </div>
       )}

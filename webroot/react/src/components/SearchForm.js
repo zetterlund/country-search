@@ -65,7 +65,7 @@ function SearchForm(props) {
             <label>Country code</label>
           </div>
         </div>
-        <button type="submit">Search</button>
+        <button type="submit">🌍 Search</button>
       </form>
     </Fragment>
   );
