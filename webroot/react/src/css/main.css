@@ -37,6 +37,30 @@ body {
   display: block;
 }
 
+h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* --- Search form --- */
+input[type="text"] {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#search-type-selection label {
+  display: inline-block;
+  min-width: 8rem;
+  margin-left: 5px;
+  text-align: left;
+}
+button[type="submit"] {
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* ------------------- */
+
 /*
 #team-selection {
   input {

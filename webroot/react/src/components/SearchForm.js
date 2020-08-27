@@ -35,7 +35,6 @@ function SearchForm(props) {
         />
         <div id="search-type-selection">
           <div>
-            <label>Country name</label>
             <input
               type="radio"
               value="country-name"
@@ -43,9 +42,9 @@ function SearchForm(props) {
               onChange={handleChange}
               checked={searchType === "country-name"}
             />
+            <label>Country name</label>
           </div>
           <div>
-            <label>Full name</label>
             <input
               type="radio"
               value="full-name"
@@ -53,9 +52,9 @@ function SearchForm(props) {
               onChange={handleChange}
               checked={searchType === "full-name"}
             />
+            <label>Full name</label>
           </div>{" "}
           <div>
-            <label>Country code</label>
             <input
               type="radio"
               value="country-code"
@@ -63,6 +62,7 @@ function SearchForm(props) {
               onChange={handleChange}
               checked={searchType === "country-code"}
             />
+            <label>Country code</label>
           </div>
         </div>
         <button type="submit">Search</button>
