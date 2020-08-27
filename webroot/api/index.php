@@ -97,7 +97,7 @@ $input = json_decode(file_get_contents('php://input'), TRUE);
 // echo json_encode($input);
 
 
-$countries = CallAPI($input[searchType], $input[searchString]);
+$countries = CallAPI($input["searchType"], $input["searchString"]);
 
 // Return results to frontend
 echo json_encode($countries);
