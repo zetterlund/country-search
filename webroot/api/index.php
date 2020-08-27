@@ -29,18 +29,27 @@ function CallAPI($searchType, $searchString) {
 
     // (What about if $searchType is null?)
 
-    // Retrieve country data based on what type of search has been requested
+    /* Compose endpoint URI */
+    // Initialize URI based on what type of search has been requested
     switch ($searchType) {
         case 'country-name':
-            $rawData = file_get_contents("http://restcountries.eu/rest/v2/name/{$searchString}?");
+            $uri = "http://restcountries.eu/rest/v2/name/{$searchString}?";
             break;
         case 'full-name':
-            $rawData = file_get_contents("http://restcountries.eu/rest/v2/name/{$searchString}?fullText=true");
+            $uri = "http://restcountries.eu/rest/v2/name/{$searchString}?fullText=true&";
             break;
         case 'country-code':
-            $rawData = file_get_contents("http://restcountries.eu/rest/v2/alpha/{$searchString}?");
+            $uri = "http://restcountries.eu/rest/v2/alpha/{$searchString}?";
             break;            
     }
+    // Add "fields" query parameter to only request the fields we are interested in
+    $searchFields = "name;alpha2Code;alpha3Code;region;subregion;population;languages;flag";
+    $uri .= "fields={$searchFields}";
+
+    // Retrieve country data
+    $rawData = file_get_contents($uri);
+
+
 
     // Decode JSON API response data
     $countryData = json_decode($rawData, true); 
